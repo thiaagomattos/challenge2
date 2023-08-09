@@ -1,6 +1,6 @@
 package thiago.silveira.demo.dtos;
 
-public class StudentDtoRequest {
+public class InstructorDtoRequest {
     private String firstName;
     private String lastName;
     private String email;
