@@ -1,16 +1,8 @@
 package thiago.silveira.demo.dtos;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.transaction.Transactional;
-import lombok.Data;
-import thiago.silveira.demo.entity.Student;
+public class ClassroomDtoResponse {
 
-@Data
-@Transactional
-public class TeamDtoRequest {
-
+    private Long id;
     private Integer numberOfStudents;
     private Integer numberOfCoordinators;
     private Integer numberOfInstructors;
@@ -18,9 +10,23 @@ public class TeamDtoRequest {
     private String status;
     private String discipline;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "fk_student_id")
-//    private Student student;
+    public ClassroomDtoResponse(Long id, Integer numberOfStudents, Integer numberOfCoordinators, Integer numberOfInstructors, Integer numberOfScrumMasters, String status, String discipline) {
+        this.id = id;
+        this.numberOfStudents = numberOfStudents;
+        this.numberOfCoordinators = numberOfCoordinators;
+        this.numberOfInstructors = numberOfInstructors;
+        this.numberOfScrumMasters = numberOfScrumMasters;
+        this.status = status;
+        this.discipline = discipline;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Integer getNumberOfStudents() {
         return numberOfStudents;
@@ -70,3 +76,4 @@ public class TeamDtoRequest {
         this.discipline = discipline;
     }
 }
+

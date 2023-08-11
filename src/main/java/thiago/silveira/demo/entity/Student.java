@@ -1,12 +1,11 @@
 package thiago.silveira.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
 import lombok.Data;
 
 @Entity
 @Data
-@Transactional
 @Table(name = "STUDENT")
 public class Student {
 
@@ -18,6 +17,10 @@ public class Student {
     private String email;
     private String address;
 
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "classroom_id")
+    private Classroom classroom;
 
     public Student() {
     }

@@ -1,11 +1,7 @@
 package thiago.silveira.demo.dtos;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.transaction.Transactional;
 import lombok.Data;
-import thiago.silveira.demo.entity.Team;
 
 @Data
 @Transactional

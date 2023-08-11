@@ -9,7 +9,7 @@ import thiago.silveira.demo.exceptions.CoordinatorIncorrectFieldException;
 import thiago.silveira.demo.service.CoordinatorService;
 
 @RestController
-@RequestMapping(value = "/scholarship/coordinator")
+@RequestMapping(value = "v1/scholarship/coordinator")
 public class CoordinatorController {
 
     @Autowired
