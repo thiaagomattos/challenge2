@@ -1,15 +1,16 @@
 package thiago.silveira.demo.entity;
 
 import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
 import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
-@Table(name = "TEAM")
+@Table(name = "CLASSROOM")
 @Data
-@Transactional
-public class Team {
+public class Classroom {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,10 +22,14 @@ public class Team {
     private String status;
     private String discipline;
 
-    public Team() {
+    @OneToMany(mappedBy = "classroom", cascade = CascadeType.PERSIST)
+    private List<Student> students = new ArrayList<>();
+
+
+    public Classroom() {
     }
 
-    public Team(Long id, Integer numberOfStudents, Integer numberOfCoordinators, Integer numberOfInstructors, Integer numberOfScrumMasters, String status, String discipline) {
+    public Classroom(Long id, Integer numberOfStudents, Integer numberOfCoordinators, Integer numberOfInstructors, Integer numberOfScrumMasters, String status, String discipline) {
         this.id = id;
         this.numberOfStudents = numberOfStudents;
         this.numberOfCoordinators = numberOfCoordinators;
@@ -92,7 +97,7 @@ public class Team {
 
     @Override
     public String toString() {
-        return "Team{" +
+        return "Classroom{" +
                 "id=" + id +
                 ", numberOfStudents=" + numberOfStudents +
                 ", numberOfCoordinators=" + numberOfCoordinators +

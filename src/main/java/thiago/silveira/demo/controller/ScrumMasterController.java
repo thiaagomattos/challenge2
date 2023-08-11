@@ -9,7 +9,7 @@ import thiago.silveira.demo.exceptions.ScrumMasterIncorrectFieldException;
 import thiago.silveira.demo.service.ScrumMasterService;
 
 @RestController
-@RequestMapping(value = "/scholarship/scrumMaster")
+@RequestMapping(value = "v1/scholarship/scrumMaster")
 public class ScrumMasterController {
 
     @Autowired

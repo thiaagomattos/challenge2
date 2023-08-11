@@ -1,8 +1,16 @@
 package thiago.silveira.demo.dtos;
 
-public class TeamDtoResponse {
+import jakarta.transaction.Transactional;
+import lombok.Data;
+import thiago.silveira.demo.entity.Student;
 
-    private Long id;
+import java.util.ArrayList;
+import java.util.List;
+
+@Data
+@Transactional
+public class ClassroomDtoRequest {
+
     private Integer numberOfStudents;
     private Integer numberOfCoordinators;
     private Integer numberOfInstructors;
@@ -10,23 +18,8 @@ public class TeamDtoResponse {
     private String status;
     private String discipline;
 
-    public TeamDtoResponse(Long id, Integer numberOfStudents, Integer numberOfCoordinators, Integer numberOfInstructors, Integer numberOfScrumMasters, String status, String discipline) {
-        this.id = id;
-        this.numberOfStudents = numberOfStudents;
-        this.numberOfCoordinators = numberOfCoordinators;
-        this.numberOfInstructors = numberOfInstructors;
-        this.numberOfScrumMasters = numberOfScrumMasters;
-        this.status = status;
-        this.discipline = discipline;
-    }
+    private List<StudentDtoRequest> students = new ArrayList<>();
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Integer getNumberOfStudents() {
         return numberOfStudents;
@@ -76,4 +69,3 @@ public class TeamDtoResponse {
         this.discipline = discipline;
     }
 }
-

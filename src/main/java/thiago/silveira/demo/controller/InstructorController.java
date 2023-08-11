@@ -9,7 +9,7 @@ import thiago.silveira.demo.exceptions.InstructorIncorrectFieldException;
 import thiago.silveira.demo.service.InstructorService;
 
 @RestController
-@RequestMapping(value = "/scholarship/instructor")
+@RequestMapping(value = "v1/scholarship/instructor")
 public class InstructorController {
 
     @Autowired
