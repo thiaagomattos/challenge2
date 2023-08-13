@@ -19,7 +19,7 @@ public class Classroom {
     private Integer numberOfCoordinators;
     private Integer numberOfInstructors;
     private Integer numberOfScrumMasters;
-    private String status;
+    private Status status;
     private String discipline;
 
     @OneToMany(mappedBy = "classroom", cascade = CascadeType.PERSIST)
@@ -29,7 +29,7 @@ public class Classroom {
     public Classroom() {
     }
 
-    public Classroom(Long id, Integer numberOfStudents, Integer numberOfCoordinators, Integer numberOfInstructors, Integer numberOfScrumMasters, String status, String discipline) {
+    public Classroom(Long id, Integer numberOfStudents, Integer numberOfCoordinators, Integer numberOfInstructors, Integer numberOfScrumMasters, Status status, String discipline) {
         this.id = id;
         this.numberOfStudents = numberOfStudents;
         this.numberOfCoordinators = numberOfCoordinators;
@@ -79,11 +79,11 @@ public class Classroom {
         this.numberOfScrumMasters = numberOfScrumMasters;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
