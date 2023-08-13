@@ -1,5 +1,7 @@
 package thiago.silveira.demo.dtos;
 
+import thiago.silveira.demo.entity.Status;
+
 public class ClassroomDtoResponse {
 
     private Long id;
@@ -7,10 +9,10 @@ public class ClassroomDtoResponse {
     private Integer numberOfCoordinators;
     private Integer numberOfInstructors;
     private Integer numberOfScrumMasters;
-    private String status;
+    private Status status;
     private String discipline;
 
-    public ClassroomDtoResponse(Long id, Integer numberOfStudents, Integer numberOfCoordinators, Integer numberOfInstructors, Integer numberOfScrumMasters, String status, String discipline) {
+    public ClassroomDtoResponse(Long id, Integer numberOfStudents, Integer numberOfCoordinators, Integer numberOfInstructors, Integer numberOfScrumMasters, Status status, String discipline) {
         this.id = id;
         this.numberOfStudents = numberOfStudents;
         this.numberOfCoordinators = numberOfCoordinators;
@@ -60,11 +62,11 @@ public class ClassroomDtoResponse {
         this.numberOfScrumMasters = numberOfScrumMasters;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

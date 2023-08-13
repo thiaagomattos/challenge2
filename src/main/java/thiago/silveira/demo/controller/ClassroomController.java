@@ -6,6 +6,7 @@ import thiago.silveira.demo.dtos.ClassroomDtoRequest;
 import thiago.silveira.demo.dtos.ClassroomDtoResponse;
 import thiago.silveira.demo.dtos.StudentDtoRequest;
 import thiago.silveira.demo.entity.Classroom;
+import thiago.silveira.demo.entity.Status;
 import thiago.silveira.demo.entity.Student;
 import thiago.silveira.demo.exceptions.ClassroomIncorrectFieldException;
 import thiago.silveira.demo.service.ClassroomService;
@@ -22,15 +23,21 @@ public class ClassroomController {
     @PostMapping("/post")
     public String post(@RequestBody ClassroomDtoRequest classroomDtoRequest) {
         Classroom classroom = new Classroom();
-            classroom.setNumberOfStudents(classroomDtoRequest.getNumberOfStudents());
-            classroom.setNumberOfCoordinators(classroomDtoRequest.getNumberOfCoordinators());
-            classroom.setNumberOfInstructors(classroomDtoRequest.getNumberOfInstructors());
-            classroom.setNumberOfScrumMasters(classroomDtoRequest.getNumberOfScrumMasters());
-            classroom.setStatus(classroomDtoRequest.getStatus());
-            classroom.setDiscipline(classroomDtoRequest.getDiscipline());
-        List<Student>students = new ArrayList<>();
+        classroom.setNumberOfStudents(classroomDtoRequest.getNumberOfStudents());
+        classroom.setNumberOfCoordinators(classroomDtoRequest.getNumberOfCoordinators());
+        classroom.setNumberOfInstructors(classroomDtoRequest.getNumberOfInstructors());
+        classroom.setNumberOfScrumMasters(classroomDtoRequest.getNumberOfScrumMasters());
+        classroom.setStatus(classroomDtoRequest.getStatus());
+        classroom.setDiscipline(classroomDtoRequest.getDiscipline());
+        List<Student> students = new ArrayList<>();
 
-        for(StudentDtoRequest student:classroomDtoRequest.getStudents()){
+        if (classroom.getNumberOfCoordinators() == 1 && classroom.getNumberOfInstructors() == 3 && classroom.getNumberOfScrumMasters() == 1) {
+            classroom.setStatus(Status.STARTED);
+        } else {
+            classroom.setStatus(Status.WAITING);
+        }
+
+        for (StudentDtoRequest student : classroomDtoRequest.getStudents()) {
             Student student1 = new Student();
             student1.setFirstName(student.getFirstName());
             student1.setLastName(student.getLastName());
@@ -38,14 +45,17 @@ public class ClassroomController {
             student1.setAddress(student.getAddress());
             student1.setClassroom(classroom);
             students.add(student1);
+
         }
-            classroom.setStudents(students);
+        classroom.setStudents(students);
+
         try {
             classroomService.save(classroom);
             return "Classroom saved!";
         } catch (ClassroomIncorrectFieldException e) {
             return "Classroom not saved";
         }
+
     }
 
     @GetMapping("/get/{id}")
@@ -64,4 +74,5 @@ public class ClassroomController {
         return "Classroom Deleted!";
     }
 }
+
 

@@ -2,7 +2,7 @@ package thiago.silveira.demo.dtos;
 
 import jakarta.transaction.Transactional;
 import lombok.Data;
-import thiago.silveira.demo.entity.Student;
+import thiago.silveira.demo.entity.Status;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +15,14 @@ public class ClassroomDtoRequest {
     private Integer numberOfCoordinators;
     private Integer numberOfInstructors;
     private Integer numberOfScrumMasters;
-    private String status;
+    private Status status;
     private String discipline;
 
     private List<StudentDtoRequest> students = new ArrayList<>();
 
 
     public Integer getNumberOfStudents() {
-        return numberOfStudents;
+        return getStudents().toArray().length;
     }
 
     public void setNumberOfStudents(Integer numberOfStudents) {
@@ -53,11 +53,11 @@ public class ClassroomDtoRequest {
         this.numberOfScrumMasters = numberOfScrumMasters;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
