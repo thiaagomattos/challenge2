@@ -65,12 +65,13 @@ public class Student {
         this.address = address;
     }
 
-    public Student(Long id, String firstName, String lastName, String email, String address) {
+    public Student(Long id, String firstName, String lastName, String email, String address, Classroom classroom) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.address = address;
+        this.classroom = classroom;
     }
 
     @Override
