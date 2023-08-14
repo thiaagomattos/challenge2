@@ -3,6 +3,8 @@ package thiago.silveira.demo.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+
+
 @Entity
 @Data
 @Table(name = "SQUAD")
@@ -13,6 +15,7 @@ public class Squad {
     private Long id;
     private Integer numberOfStudents;
     private String nameSquad;
+
 
     public Squad() {
     }

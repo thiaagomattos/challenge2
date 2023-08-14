@@ -8,18 +8,23 @@ import thiago.silveira.demo.entity.Student;
 import thiago.silveira.demo.exceptions.StudentIncorrectFieldException;
 import thiago.silveira.demo.repository.StudentRepository;
 
+
 @Service
 public class StudentService {
 
+
+
     @Autowired
     StudentRepository studentRepository;
+    @Autowired
+    ClassroomService classroomService;
 
-        public Student save(StudentDtoRequest studentDtoRequest) {
+    public Student save(StudentDtoRequest studentDtoRequest) {
 
 
 
             Student student = new Student(null, studentDtoRequest.getFirstName(), studentDtoRequest.getLastName(), studentDtoRequest.getEmail(),
-                studentDtoRequest.getAddress());
+                studentDtoRequest.getAddress(), classroomService.getById(studentDtoRequest.getClassroom()));
 
         return studentRepository.save(student);
     }
