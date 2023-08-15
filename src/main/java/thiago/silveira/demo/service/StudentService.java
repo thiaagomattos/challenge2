@@ -21,8 +21,6 @@ public class StudentService {
 
     public Student save(StudentDtoRequest studentDtoRequest) {
 
-
-
             Student student = new Student(null, studentDtoRequest.getFirstName(), studentDtoRequest.getLastName(), studentDtoRequest.getEmail(),
                 studentDtoRequest.getAddress(), classroomService.getById(studentDtoRequest.getClassroom()));
 
@@ -33,8 +31,8 @@ public class StudentService {
         Student student = studentRepository
                 .findById(id)
                 .orElseThrow(() -> new StudentIncorrectFieldException("Student not found!"));
-        StudentDtoResponse studentDtoResponse = new StudentDtoResponse(student.getId(), student.getFirstName(), student.getLastName(),
-                student.getEmail(), student.getAddress());
+        StudentDtoResponse studentDtoResponse = new StudentDtoResponse(
+        );
         return studentDtoResponse;
     }
 
