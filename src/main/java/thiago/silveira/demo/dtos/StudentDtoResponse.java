@@ -7,7 +7,7 @@ public class StudentDtoResponse {
     private String email;
     private String address;
 
-    public StudentDtoResponse(Long id, String firstName, String lastName, String email, String address) {
+    public StudentDtoResponse() {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
