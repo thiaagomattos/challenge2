@@ -1,0 +1,442 @@
+{
+	"info": {
+		"_postman_id": "c60cdf8e-c2ea-4f82-84da-d0ea782f6b93",
+		"name": "Student_PB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28448017"
+	},
+	"item": [
+		{
+			"name": "POST_STUDENT",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Lucas\",\r\n    \"lastName\": \"Mattos\",\r\n    \"email\": \"thiago2@gmail.com\",\r\n    \"address\": \"Rua Videira, 50\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/v1/scholarship/student/post"
+			},
+			"response": []
+		},
+		{
+			"name": "GET_BY_ID_STUDENT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/v1/scholarship/student/get/1"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT_STUDENT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"1\",\r\n    \"firstName\": \"Marta\",\r\n    \"lastName\": \"Mattos\",\r\n    \"email\": \"thiagooo@gmail.com\",\r\n    \"address\": \"Rua Videira, 50\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/v1/scholarship/student/update"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE_STUDENT",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/scholarship/student/delete?id=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"scholarship",
+						"student",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST_COORDINATOR",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"João\",\r\n    \"lastName\": \"Mattos\",\r\n    \"email\": \"thiago2@gmail.com\",\r\n    \"address\": \"Rua Videira, 50\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/v1/scholarship/coordinator/post"
+			},
+			"response": []
+		},
+		{
+			"name": "GET_BY_ID_COORDINATOR",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/v1/scholarship/coordinator/get/1"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT_COORDINATOR",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"1\",\r\n    \"firstName\": \"Jo\",\r\n    \"lastName\": \"Mattos\",\r\n    \"email\": \"thiago2@gmail.com\",\r\n    \"address\": \"Rua Videira, 50\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/v1/scholarship/coordinator/update"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE_COORDINATOR",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/scholarship/coordinator/delete?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"scholarship",
+						"coordinator",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST_INSTRUCTOR",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"João\",\r\n    \"lastName\": \"Mattos\",\r\n    \"email\": \"thiago2@gmail.com\",\r\n    \"address\": \"Rua Videira, 50\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/v1/scholarship/instructor/post"
+			},
+			"response": []
+		},
+		{
+			"name": "GET_BY_ID_INSTRUCTOR",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/v1/scholarship/instructor/get/1"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT_INSTRUCTOR",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"1\",\r\n    \"firstName\": \"Jo\",\r\n    \"lastName\": \"Mattos\",\r\n    \"email\": \"thiago2@gmail.com\",\r\n    \"address\": \"Rua Videira, 50\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/v1/scholarship/instructor/update"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE_INSTRUCTOR",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/scholarship/instructor/delete?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"scholarship",
+						"instructor",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST_SCRUM_MASTER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Scrum\",\r\n    \"lastName\": \"Mattos\",\r\n    \"email\": \"thiago2@gmail.com\",\r\n    \"address\": \"Rua Videira, 50\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/v1/scholarship/scrumMaster/post"
+			},
+			"response": []
+		},
+		{
+			"name": "GET_BY_ID_SCRUM_MASTER",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/v1/scholarship/scrumMaster/get/1"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT_SCRUM_MASTER",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"1\",\r\n    \"firstName\": \"Jo\",\r\n    \"lastName\": \"Mattos\",\r\n    \"email\": \"thiago2@gmail.com\",\r\n    \"address\": \"Rua Videira, 50\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/v1/scholarship/scrumMaster/update"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE_SCRUM_MASTER",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/scholarship/scrumMaster/delete?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"scholarship",
+						"scrumMaster",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST_CLASSROOM",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numberOfStudents\": 3,\r\n    \"numberOfCoordinators\": 2,\r\n    \"numberOfInstructors\": 3,\r\n    \"numberOfScrumMasters\": 1,\r\n    \"status\": \"waiting\",\r\n    \"discipline\":\"math\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/v2/scholarship/classroom/post"
+			},
+			"response": []
+		},
+		{
+			"name": "GET_BY_ID_CLASSROOM",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/v2/scholarship/classroom/get/1"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT_CLASSROOM",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1,\r\n    \"numberOfStudents\": 5,\r\n    \"numberOfCoordinators\": 2,\r\n    \"numberOfInstructors\": 3,\r\n    \"numberOfScrumMasters\": 1,\r\n    \"status\": \"waiting\",\r\n    \"discipline\":\"math\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/v2/scholarship/classroom/update"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE_CLASSROOM",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v2/scholarship/classroom/delete?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v2",
+						"scholarship",
+						"classroom",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST_SQUAD",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numberOfStudents\": 4,\r\n    \"nameSquad\": \"Kambambans\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/v2/scholarship/squad/post"
+			},
+			"response": []
+		},
+		{
+			"name": "GET_SQUAD",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/v2/scholarship/squad/get/3"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT_SQUAD",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1,\r\n    \"numberOfStudents\": 5,\r\n    \"nameSquad\": \"Andorinhas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/v2/scholarship/squad/update"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE_SQUAD",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v2/scholarship/squad/delete?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v2",
+						"scholarship",
+						"squad",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
