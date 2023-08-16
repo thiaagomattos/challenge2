@@ -10,7 +10,6 @@ import thiago.silveira.demo.dtos.StudentDtoRequest;
 import thiago.silveira.demo.entity.Classroom;
 import thiago.silveira.demo.entity.Status;
 import thiago.silveira.demo.entity.Student;
-import thiago.silveira.demo.exceptions.ClassroomIncorrectFieldException;
 import thiago.silveira.demo.repository.ClassroomRepository;
 
 import java.util.ArrayList;
