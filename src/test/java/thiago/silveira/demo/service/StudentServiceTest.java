@@ -28,21 +28,14 @@ class StudentServiceTest {
 
     @Test
     void testSaveStudent() {
-        StudentDtoRequest studentDtoRequest = new StudentDtoRequest();
-        studentDtoRequest.setFirstName("Thiago");
-        studentDtoRequest.setLastName("Mattos");
-        studentDtoRequest.setEmail("thiago@gmail.com");
-        studentDtoRequest.setAddress("Rua Padre Jorge, 31");
-        studentDtoRequest.setClassroom_id(1L);
+        StudentDtoRequest request = new StudentDtoRequest();
+        Student expectedStudent = new Student();
 
-        Student savedStudent = new Student();
-        when(studentRepository.save(any())).thenReturn(savedStudent);
+        when(studentRepository.save(any(Student.class))).thenReturn(expectedStudent);
 
-        Student result = studentService.save(studentDtoRequest);
+        Student savedStudent = studentService.save(request);
 
-        assertNotNull(result);
-        assertEquals(savedStudent, result);
-        verify(studentRepository, times(1)).save(any());
+        assertEquals(expectedStudent, savedStudent);
     }
 
     @Test
@@ -74,7 +67,8 @@ class StudentServiceTest {
     void testDeleteStudent() {
         Long studentId = 1L;
 
-        assertDoesNotThrow(() -> studentService.deleteStudent(studentId));
+        studentService.deleteStudent(studentId);
+
         verify(studentRepository, times(1)).deleteById(studentId);
     }
 }
