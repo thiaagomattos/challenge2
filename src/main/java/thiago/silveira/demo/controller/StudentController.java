@@ -21,7 +21,7 @@ public class StudentController {
             studentService.save(studentDtoRequest);
             return "Student saved!";
         } catch (StudentIncorrectFieldException e) {
-            return "Student not saved";
+            return "Student not found!";
         }
     }
     @GetMapping("/get/{id}")

@@ -31,8 +31,7 @@ public class StudentService {
         Student student = studentRepository
                 .findById(id)
                 .orElseThrow(() -> new StudentIncorrectFieldException("Student not found!"));
-        StudentDtoResponse studentDtoResponse = new StudentDtoResponse(
-        );
+        StudentDtoResponse studentDtoResponse = new StudentDtoResponse();
         return studentDtoResponse;
     }
 
