@@ -60,6 +60,7 @@ public class ClassroomService {
         Classroom classroom = classroomRepository
                 .findById(id)
                 .orElseThrow(() -> new ClassroomIncorrectFieldException("Classroom not found!"));
+
         return classroom;
     }
 

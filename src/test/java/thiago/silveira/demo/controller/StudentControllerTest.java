@@ -13,7 +13,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import thiago.silveira.demo.dtos.StudentDtoRequest;
 import thiago.silveira.demo.dtos.StudentDtoResponse;
 import thiago.silveira.demo.entity.Student;
-import thiago.silveira.demo.exceptions.StudentIncorrectFieldException;
 import thiago.silveira.demo.service.StudentService;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -42,11 +41,12 @@ public class StudentControllerTest {
 
     @Test
     public void testPostEndpoint() throws Exception {
-        doNothing().when(studentService).save(any(StudentDtoRequest.class));
+        StudentDtoRequest request = new StudentDtoRequest();
+        when(studentService.save(any())).thenReturn(new Student());
 
         mockMvc.perform(post("/v1/scholarship/student/post")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"id\":\"1\"}"))
+                        .content("{}"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Student saved!"));
     }
@@ -58,18 +58,18 @@ public class StudentControllerTest {
         studentDtoResponse.setFirstName("Lucas");
         studentDtoResponse.setLastName("Silva");
         studentDtoResponse.setEmail("lucas@gmail.com");
-        studentDtoResponse.setAddress("Av. Machado, 992");
+        studentDtoResponse.setAddress("Rua João Meirelles, 433");
 
 
         when(studentService.getById(1L)).thenReturn(studentDtoResponse);
 
         mockMvc.perform(get("/v1/scholarship/student/get/1"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(1))
+                .andExpect(jsonPath("$.id").value(1L))
                 .andExpect(jsonPath("$.firstName").value("Lucas"))
                 .andExpect(jsonPath("$.lastName").value("Silva"))
                 .andExpect(jsonPath("$.email").value("lucas@gmail.com"))
-                .andExpect(jsonPath("$.address").value("Av. Machado, 992"));
+                .andExpect(jsonPath("$.address").value("Rua João Meirelles, 433"));
     }
 
     @Test
@@ -83,10 +83,9 @@ public class StudentControllerTest {
 
         when(studentService.updateStudent(any(Student.class))).thenReturn(studentToUpdate);
 
-        mockMvc.perform(put("/v1/scholarship/student/update")
+         mockMvc.perform(put("/v1/scholarship/student/update")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"id\": 1, \"firstName\": Lucas, \"lastName\": Silva, \"email\": lucas@gmail.com," +
-                                "\"address\": Rua João Meirelles, 433\"}"))  // Provide valid JSON content
+                        .content("{}"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(1))
                 .andExpect(jsonPath("$.firstName").value("Lucas"))

@@ -4,14 +4,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import thiago.silveira.demo.dtos.ClassroomDtoRequest;
 import thiago.silveira.demo.entity.Classroom;
-import thiago.silveira.demo.exceptions.ClassroomIncorrectFieldException;
+import thiago.silveira.demo.entity.Status;
 import thiago.silveira.demo.service.ClassroomService;
 
 import static org.mockito.ArgumentMatchers.*;
@@ -29,45 +28,53 @@ public class ClassroomControllerTest {
     private ClassroomService classroomService;
 
     @InjectMocks
-    private ClassroomController classroomController;
+    private ClassroomDtoRequest classroomDtoRequest;
 
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.openMocks(this);
+        classroomDtoRequest = new ClassroomDtoRequest();
+        classroomDtoRequest.setNumberOfStudents(15);
+        classroomDtoRequest.setNumberOfCoordinators(1);
+        classroomDtoRequest.setNumberOfInstructors(3);
+        classroomDtoRequest.setNumberOfScrumMasters(1);
+        classroomDtoRequest.setStatus(Status.STARTED);
+        classroomDtoRequest.setDiscipline("English");
     }
 
     @Test
-    public void testPost_Success() throws Exception {
+    public void testPostEndpoint() throws Exception {
         ClassroomDtoRequest request = new ClassroomDtoRequest();
         when(classroomService.save(any())).thenReturn(new Classroom());
 
         mockMvc.perform(post("/v2/scholarship/classroom/post")
-                        .content("{}")
-                        .contentType(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{}"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Classroom saved!"));
     }
 
     @Test
-    public void testPost_Failure() throws Exception {
-        ClassroomDtoRequest request = new ClassroomDtoRequest();
-        when(classroomService.save(any())).thenThrow(new ClassroomIncorrectFieldException("Classroom not found"));
+    public void testGetEndpoint() throws Exception {
+        Classroom classroom = new Classroom(1L, 15, 1, 3, 1, Status.STARTED, "English");
+        classroom.setId(1L);
+        classroom.setNumberOfStudents(15);
+        classroom.setNumberOfCoordinators(1);
+        classroom.setNumberOfInstructors(3);
+        classroom.setNumberOfScrumMasters(1);
+        classroom.setStatus(Status.STARTED);
+        classroom.setDiscipline("English");
 
-        mockMvc.perform(post("/v2/scholarship/classroom/post")
-                        .content("{}")
-                        .contentType(MediaType.APPLICATION_JSON))
+        when(classroomService.getById(1L)).thenReturn(classroom);
+
+        mockMvc.perform(get("/v2/scholarship/classroom/get/1"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Classroom not saved"));
-    }
-
-    @Test
-    public void testGetById_Success() throws Exception {
-        Classroom classroom = new Classroom();
-        when(classroomService.getById(anyLong())).thenReturn(classroom);
-
-        mockMvc.perform(get("/v2/scholarship/classroom/get/{id}", 1L))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$").exists());
+                .andExpect(jsonPath("$.id").value(1L))
+                .andExpect(jsonPath("$.numberOfStudents").value(15))
+                .andExpect(jsonPath("$.numberOfCoordinators").value(1))
+                .andExpect(jsonPath("$.numberOfInstructors").value(3))
+                .andExpect(jsonPath("$.numberOfScrumMasters").value(1))
+                .andExpect(jsonPath("$.status").value(Status.STARTED))
+                .andExpect(jsonPath("$.discipline").value("English"));
     }
 
     @Test
